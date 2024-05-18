@@ -13,7 +13,12 @@ export function useLocalStorage(key, initialData) {
   }, []);
 
   const updateLocalStorage = (newData) => {
-    localStorage.setItem(key, JSON.stringify(newData));
+    {
+      typeof newData === "function"
+        ? localStorage.setItem(key, JSON.stringify(newData(data)))
+        : localStorage.setItem(key, JSON.stringify(newData));
+    }
+
     setData(newData);
   };
 
