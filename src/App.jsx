@@ -7,13 +7,13 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
   const [expenses, setExpenses] = useLocalStorage("expenses", expenseData);
-  const [expense, setExpense] = useState({
+  const [expense, setExpense] = useLocalStorage('expense',{
     title: "",
     category: "",
     amount: "",
   });
 
-  const [editingRowID, setEditingRowID] = useState("");
+  const [editingRowID, setEditingRowID] = useLocalStorage("editingRowId", "");
 
   return (
     <main>
